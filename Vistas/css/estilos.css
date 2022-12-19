@@ -4,5 +4,48 @@
 }
 .contenedor {
 
-    position: center;
+    position: relative;
   }
+
+.loginDiv{ 
+	
+	
+	top: 20vh;
+	position: relative;
+	background-color: white;
+	width: 10px;
+	border-radius: 60px;
+	height: auto;
+	
+	
+   
+}
+.intDiv{
+	
+	top: 20vh;
+	position: relative;
+	background-color: white;
+	width: auto;
+	border-radius: 60px;
+	height: auto;
+	
+	
+   
+}
+.loginContainer{
+	
+	padding: 20px;
+
+}
+.loginTitle{
+
+	width: 100%;
+	text-align: center;
+
+}
+.loginTitle h5{
+
+	font-weight: bold;
+	
+}
+

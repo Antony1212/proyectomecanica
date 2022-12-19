@@ -2,40 +2,48 @@
 	<div class="row">
 		
     <div class="col s12">
-		<div class="col s4 m4">
-			<div class=".container">
-			<div class="card">
-				<div class="card-image">
-				<img src="images/sample-1.jpg">
-				<span class="card-title">Card Title</span>
-				</div>
-				<div class="card-content">
-				<p>I am a very simple card. I am good at containing small bits of information.
-				I am convenient because I require little markup to use effectively.</p>
-				</div>
-				<div class="card-action">
-				<a href="#">This is a link</a>
-				</div>
-			</div>
-			</div>
-		</div>
-		<div class="col s6 m6">
-			<div class="card">
-				<div class="card-image">
-				<img src="images/sample-1.jpg">
-				<span class="card-title">Card Title</span>
-				</div>
-				<div class="card-content">
-				<p>I am a very simple card. I am good at containing small bits of information.
-				I am convenient because I require little markup to use effectively.</p>
-				</div>
-				<div class="card-action">
-				<a href="#">This is a link</a>
-				</div>
-			</div>
+
+		
+		<div class="row">
+		
+			<div class= "col s12 m12 l8 offset-12 loginDiv">
+				<div class="row loginContainer">
+					
+					<div class="col s12 m5 l5 offset-l1 offset-m1">
+						<div class="loginTitle">
+							<h5>Inicio de Session sistema de ventas</h5>
+							<div class="col s12">
+
+								<form method="post" action="">
 			
+								<div class="row">
+								<div class="input-field col s12">
+									<input id="email" type="email" class="validate"  name="usuarioI" required>
+									<label for="email">Introdusca Su Correo</label>
+								</div>
+							</div>
+							<div class="row">
+								<div class="input-field col s12">
+									<input id="password" type="password" class="validate"  name="claveI" required>
+									<label for="password">Introdusca Su Contraseña</label>
+								</div>
+							</div>
+									<button class="btn waves-effect waves-light findbtn" type="submit" value="Ingresar"  >Ingresar<i class="material-icons right">send</i></button>
+									
+								</form>
+							
+								
+								
+							</div>
+						</div>
+					</div>
+	
+				</div>
+			</div>	
 		</div>
-	</div>  
+	</div>	
+		
+	 
  </div>
     
 </body>
