@@ -27,7 +27,15 @@
 									<div class="input-field col s12">
 										<div class="g-recaptcha" data-sitekey="6Lc714sjAAAAAOlNU1Rr9ZAwmSOhpzfO-8OqQ35w"></div>
 									</div>
+									<div class="col s12">
+									<p>
+										<label>
+											<input id="indeterminate-checkbox" type="checkbox" />
+											<span>Aceptas Nuestros Términos y Condiciones y Política de Tratamiento de Datos.</span>
+										</label>
+									</p>
 								
+									</div>	
 									<div class="col s12">
 										
 										<button class="btn waves-effect waves-light" type="submit" name="action">Ingresar
