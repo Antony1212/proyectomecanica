@@ -12,8 +12,8 @@
 	
 	top: 20vh;
 	position: relative;
-	background-color: white;
-	width: 10px;
+	background-color: rgb(255, 255, 255);
+	width: auto;
 	border-radius: 60px;
 	height: auto;
 	
@@ -34,7 +34,7 @@
 }
 .loginContainer{
 	
-	padding: 20px;
+	padding: 10px;
 
 }
 .loginTitle{
@@ -48,4 +48,5 @@
 	font-weight: bold;
 	
 }
+
 
