@@ -4,6 +4,7 @@ class RutasM{
         if( $ruta == "ingreso" || 
             $ruta == 'empleados' || 
             $ruta == 'registrar' || 
+            $ruta == 'ingresousuario' || 
             $ruta == 'salir' ||
             $ruta == 'editar')
         {
