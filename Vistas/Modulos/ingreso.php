@@ -16,26 +16,30 @@
 					
 					<div class="col s10 m10 10 offset-l1 offset-m1">
 						<div class="loginTitle">
-							<h5>Inicio de Session sistema de ventas</h5>
+							<h5>Introdusca la placa del vehiculo</h5>
 							<div class="col s12">
 
-								<form method="post" action="">
+								
+
+								
+										<form method="post" action="">
 			
-								<div class="row">
-								<div class="input-field col s12">
-									<input id="email" type="email" class="validate"  name="usuarioI" required>
-									<label for="email">Introdusca Su Correo</label>
-								</div>
-							</div>
-							<div class="row">
-								<div class="input-field col s12">
-									<input id="password" type="password" class="validate"  name="claveI" required>
-									<label for="password">Introdusca Su Contraseña</label>
-								</div>
-							</div>
-									<button class="btn waves-effect waves-light findbtn" type="submit" value="Ingresar"  >Ingresar<i class="material-icons right">send</i></button>
+							
+										<div class="input-field col s12">
+											<div class="col s10">
+												<input id="email" type="email" class="validate"  name="usuarioI" required>
+												<label for="email">Introdusca Su Placa</label>
+											</div>
+											
+											<div class="col s2">
+											<button class="btn waves-effect waves-light findbtn" type="submit" value="Ingresar"  ><i class="material-icons right center-align">send</i></button>
+											</div>
+											
+										</div>	
+										</form>
 									
-								</form>
+								</div>
+								
 							
 								
 								
