@@ -15,12 +15,12 @@
 								<div class="row">
 									<div class="input-field col s12">
 										<i class="material-icons prefix">account_circle</i>
-										<input id="icon_prefix" type="text" class="validate" name="usuario">
+										<input id="icon_prefix" type="text" class="validate" name="usuario" required>
 										<label for="icon_prefix">Username</label>
 									</div>
 									<div class="input-field col s12">
 										<i class="material-icons prefix">key</i>
-										<input id="icon_telephone" type="Password" class="validate" name="contraseña">
+										<input id="icon_telephone" type="Password" class="validate" name="contraseña" required>
 										<label for="icon_telephone">Password</label>
 									</div>
 
@@ -30,7 +30,7 @@
 									<div class="col s12">
 									<p>
 										<label>
-											<input id="indeterminate-checkbox" type="checkbox" />
+											<input id="indeterminate-checkbox" type="checkbox" required>
 											<span>Aceptas Nuestros Términos y Condiciones y Política de Tratamiento de Datos.</span>
 										</label>
 									</p>
@@ -43,7 +43,13 @@
 										</button>
 									</div>
 								</form>
+									<div class="col s12">
 									
+									</div>
+									
+									<div class="col s12">
+										<a href="index.php?ruta=ingreso">Ingresar con PLca de Vehiculo</a>	
+									</div>
 							</div>
 						</div>
 					</div>

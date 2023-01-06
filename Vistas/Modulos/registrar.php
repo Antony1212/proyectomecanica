@@ -2,7 +2,19 @@
 $registrar = new EmpleadosC();
 $registrar->registrarEmpleadosC();
 ?>
-<br>  <!-- Vistas/Modulos/registrar.php -->
+<body class="fondo-body">
+
+ <div class="row">
+
+<div class="col s12 m4 l3"> 
+<?php
+
+	include 'menu.php';
+
+?>
+</div>
+
+<div class="col s12 m8 l9"> <!-- Note that "m8 l9" was added -->
 <h1>REGISTRAR UN EMPLEADO</h1>
 
 <form method="post" action="">
@@ -13,3 +25,10 @@ $registrar->registrarEmpleadosC();
 	<input type="text" placeholder="Salario" name="salarioR" required>
 	<input type="submit" value="Registrar">
 </form>
+
+</div>
+
+</div>
+
+</body>
+

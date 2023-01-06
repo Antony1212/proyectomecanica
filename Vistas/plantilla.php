@@ -133,7 +133,7 @@
 	<?php
 		session_start();
 		$rutasC = new RutasC();
-		include 'modulos/menu.php';
+		
 	?>	<section>
 
 		<?php
