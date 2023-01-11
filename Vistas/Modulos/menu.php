@@ -2,16 +2,30 @@
 	<?php //if($rutasC->sesionIniciadaC()): ?>
 		
 	<?php //else: ?>
-		<ul id="sidenav-left" class="sidenav sidenav-fixed" style="transform: translateX(-105%);">
-        <li><a href="/pages/admin-dashboard" class="logo-container">Admin<i class="material-icons left">spa</i></a></li>
+		
+  <ul id="sidenav-left" class="sidenav sidenav-fixed" style="transform: translateX(-105%);">
+  <li>
+				<div class="user-view">
+					<div class="background">
+					<img src="Vistas/css/imagenes/fondopequeño.jpg" alt="">
+					</div>
+					<a href="#" class="circle">
+						<img src="Vistas/css/imagenes/logo.png" alt="" class="circle"></a>
+                <a href="#name"><span class="black-text name"><b>Nombre Apellido</b></span></a>
+                <a href="#email"><span class="black-text email"><b>Correo@gmail.com</b></span></a>
+      					<a href="#roll"><span class="black-text email"><b>Cliente</b></span></a>
+				</div>
+			</li>   
+  
+      
         <li class="no-padding">
           <ul class="collapsible collapsible-accordion">
             <div class="search-wrapper">
-            <input id="search" placeholder="Search"><i class="material-icons">search</i>
+            
             <div class="search-results"></div>
           </div>
 		  
-            <li class="bold waves-effect col s12"><a class="collapsible-header" tabindex="0">Pages<i class="material-icons chevron">chevron_left</i></a>
+            <!--<li class="bold waves-effect col s12"><a class="collapsible-header" tabindex="0">Pages<i class="material-icons chevron">chevron_left</i></a>
               <div class="collapsible-body" >
                 <ul>
                   <li><a href="/pages/admin-dashboard" class="waves-effect active">Dashboard<i class="material-icons">web</i></a></li>
@@ -59,12 +73,13 @@
                   <li><a href="/pages/admin-header-search" class="waves-effect">Search<i class="material-icons">search</i></a></li>
                 </ul>
               </div>
-            </li>
+            </li>-->
             <li class="bold waves-effect  col s12"><a class="collapsible-header" tabindex="0">Account<i class="material-icons chevron">settings</i></a>
               <div class="collapsible-body">
                 <ul>
-                  <li><a href="/pages/admin-log-in" class="waves-effect">Log In<i class="material-icons">person</i></a></li>
-                  <li><a href="/pages/admin-settings" class="waves-effect">Settings<i class="material-icons">settings</i></a></li>
+                  <li><a href="/pages/admin-settings" class="waves-effect">Ver Pefil<i class="material-icons">account_circle</i></a></li>
+                  <li><a href="/pages/admin-log-in" class="waves-effect">Salir<i class="material-icons">logout</i></a></li>
+                  
                 </ul>
               </div>
             </li>

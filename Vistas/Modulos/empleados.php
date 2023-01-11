@@ -1,37 +1,43 @@
 <?php
-$empleados = new EmpleadosC();
-$pagina = $empleados->mostrarEmpleadosC();
-$empleados->borrarEmpleadoC();
-?><br>  <!-- Vistas/Modulos/empleados.php -->
-<h1>Empleados</h1>
+//$empleados = new EmpleadosC();
+//$pagina = $empleados->mostrarEmpleadosC();
+//	$empleados->borrarEmpleadoC();
+?> <!-- Vistas/Modulos/empleados.php -->
+<div class="row">
 
-<table id="t1" border="1">
-	<thead>
-		<tr>
-			<th>Nombre</th>
-			<th>Apellido</th>
-			<th>Email</th>
-			<th>Puesto</th>
-			<th>Salario</th>
-			<th></th>
-			<th></th>
-		</tr>
-	</thead>
+	<div class="col s12"> 
+		<?php
+			include 'barra.php';
+		?>
+	</div>
 
-	<tbody>
-	<?php foreach($pagina as $key => $value): ?>
-            <tr>
-			<td><?=$value['nombre']?></td>
-			<td><?=$value['apellido']?></td>
-			<td><?=$value['email']?></td>
-			<td><?=$value['puesto']?></td>
-			<td><?=$value['salario']?></td>
-			<td><a href='index.php?ruta=editar&id=<?=$value['id']?>'>
-			<button>Editar</button></td>
-			<td><a href='index.php?ruta=empleados&id=<?=$value['id']?>'>
-			<button>Borrar</button></td>
-			</tr>
-	<?php endforeach; ?>
+	<div class="col s12 m12 l3"> 
+		<?php
+			include 'menu.php';
+		?>
+	</div>
 
-	</tbody>
-</table>
+  
+
+	<div class="col s12 m12 l8">
+	<br>
+		<div class="col s12 m6">
+			<div class="card horizontal">
+				<div class="card-image">
+					<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtpQu4xBOTydKEN4gmA5i4iSohWzT_TKGBFj5_XOaKEGvvj2wvB6WMLZjjRbrjvjgOh4E&usqp=CAU">
+				</div>
+				<div class="card-stacked">
+					<div class="card-content">
+					<p>Toyota Yaris 2009  A1A-000</p>
+					<blockquote>
+					El Vehiculo Se Encuentra En La Etapa De Revisión
+					</blockquote>
+					</div>
+					<div class="card-action">
+					<a href="#">Mostrar detalles</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+

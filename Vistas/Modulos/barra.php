@@ -7,7 +7,7 @@
     
     <a class='dropdown-trigger ' href='#' data-target='dropdown1'>Drop Me!</a>
 
-  <!-- Dropdown Structure -->
+  <!-- Dropdown Structure
       <ul id='dropdown1' class='dropdown-content'>
         <li><a href="#!">one</a></li>
         <li><a href="#!">two</a></li>
@@ -24,6 +24,7 @@
       </ul>
       <a href="#!" data-target="sidenav-left" class="sidenav-trigger left"><i class="material-icons black-text">menu</i></a>
     </div>
+     -->
   </nav>
 		
  <?php //endif; ?>

@@ -46,9 +46,9 @@
 									<div class="col s12">
 									
 									</div>
-									
+									<br>
 									<div class="col s12">
-										<a href="index.php?ruta=ingreso">Ingresar con PLca de Vehiculo</a>	
+										<a href="index.php?ruta=ingreso">Ingresar con Placa de Vehiculo</a>	
 									</div>
 							</div>
 						</div>
