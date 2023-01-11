@@ -99,7 +99,7 @@
 		);
 		$('.carousel').carousel();
 
-		$('#textarea1').val('New Text');
+		$('#textarea1').val('');
   		M.textareaAutoResize($('#textarea1'));
   		});
 

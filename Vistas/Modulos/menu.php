@@ -6,6 +6,10 @@
         <li><a href="/pages/admin-dashboard" class="logo-container">Admin<i class="material-icons left">spa</i></a></li>
         <li class="no-padding">
           <ul class="collapsible collapsible-accordion">
+            <div class="search-wrapper">
+            <input id="search" placeholder="Search"><i class="material-icons">search</i>
+            <div class="search-results"></div>
+          </div>
 		  
             <li class="bold waves-effect col s12"><a class="collapsible-header" tabindex="0">Pages<i class="material-icons chevron">chevron_left</i></a>
               <div class="collapsible-body" >
@@ -56,7 +60,7 @@
                 </ul>
               </div>
             </li>
-            <li class="bold waves-effect  col s12"><a class="collapsible-header" tabindex="0">Account<i class="material-icons chevron">chevron_left</i></a>
+            <li class="bold waves-effect  col s12"><a class="collapsible-header" tabindex="0">Account<i class="material-icons chevron">settings</i></a>
               <div class="collapsible-body">
                 <ul>
                   <li><a href="/pages/admin-log-in" class="waves-effect">Log In<i class="material-icons">person</i></a></li>
