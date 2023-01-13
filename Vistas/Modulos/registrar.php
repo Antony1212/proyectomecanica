@@ -1,6 +1,6 @@
 <?php
-$registrar = new EmpleadosC();
-$registrar->registrarEmpleadosC();
+$registrar = new adminC();
+$registrar->registroC();
 ?>
 
 <div class="row">
@@ -34,30 +34,36 @@ $registrar->registrarEmpleadosC();
     	</blockquote>
 				
 			<form method="post" id="registro">
+
 				<div class="input-field col l6 col-m6">
 					<i class="material-icons prefix">account_circle</i>
 					<input type="text" name="nombres" id="nombres">
 					<label for="nombres">Nombres</label>
 				</div>
+
 				<div class="input-field col l6 col-m6">
 					<i class="material-icons prefix">account_circle</i>
 					<input type="text" name="apellidos" id="apellidos">
 					<label for="apellidos">Apellidos</label>
 				</div>
+
 				<div class="clearfix"></div>
+
 				<div class="input-field col l4 col-m4">
 					<i class="material-icons prefix">date_range</i>
 					<input class="datepicker" type="text" name="fecha_nacimiento" id="fecha_nacimiento">
 					<label for="fecha_nacimiento">Fecha de nacimiento</label>
 				</div>
+
 				<div class="input-field col l4 m4">
 					<i class="material-icons prefix">directions</i>
-					<input type="text" name="lugar_nacimiento" id="lugar_nacimiento">
+					<input type="text" name="dirreccion" id="lugar_nacimiento">
 					<label for="lugar_nacimiento">Direccion</label>
 				</div>
+
 				<div class="input-field col l4 m4">
 					<i class="material-icons prefix">map</i>
-					<select name="pais">
+					<select name="departamento">
 						<option selected disabled>Departamento</option>
 						<option value="1">Amazonas</option>
 						<option value="2">Áncash</option>
@@ -96,8 +102,8 @@ $registrar->registrarEmpleadosC();
 
 				<div class="input-field col l6 m6">
 					<i class="material-icons prefix">payment</i>
-					<input type="text" name="nombres" id="nombres">
-					<label for="nombres">Documento de Identidad</label>
+					<input type="text" name="dni" id="dni">
+					<label for="dni">Documento de Identidad</label>
 				</div>
 				<div class="clearfix"></div>
 				
