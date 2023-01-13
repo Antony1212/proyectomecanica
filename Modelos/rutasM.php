@@ -6,7 +6,8 @@ class RutasM{
             $ruta == 'registrar' ||
             $ruta == 'registrarplaca' ||  
             $ruta == 'registrarmecanico' || 
-            $ruta == 'ingresousuario' || 
+            $ruta == 'ingresousuario' ||
+            
             $ruta == 'salir' ||
             $ruta == 'editar')
         {

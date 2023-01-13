@@ -78,7 +78,7 @@
               <div class="collapsible-body">
                 <ul>
                   <li><a href="/pages/admin-settings" class="waves-effect">Ver Pefil<i class="material-icons">account_circle</i></a></li>
-                  <li><a href="/pages/admin-log-in" class="waves-effect">Salir<i class="material-icons">logout</i></a></li>
+                  <li><a href="index.php?ruta=salir" class="waves-effect">Salir<i class="material-icons">logout</i></a></li>
                   
                 </ul>
               </div>
