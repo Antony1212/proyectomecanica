@@ -5,18 +5,79 @@ class EmpleadosC {
     }
 
     public function registrarEmpleadosC(){
-        if(isset($_POST['dni'])){
+        if(isset($_POST['placa'])){
             $datosC =array();
             $datosC['dni'] = $_POST['dni'];
             $datosC['placa'] = $_POST['placa'];
             $datosC['modelo'] = $_POST['modelo'];
             $datosC['Detalles'] = $_POST['Detalles'];
             $datosC['tipo'] = $_POST['tipo'];
-             $datosC['foto'] = $_POST['foto'];
 
-            $result = $this->empleadosM->registrarEmpleadosM($datosC);
-         
-            header('location: index.php?ruta=empleados');
+
+            $placa=$_POST['placa'];
+            $ruta="Vistas/css/imagenes";
+            if ($_FILES)
+            {
+                $name = $_FILES['foto']['name'];
+                switch ($_FILES['foto']['type'])
+                {
+                    case 'image/jpeg':  $ext = 'jpg'; break;
+                    case 'image/jpeg':  $ext = 'jpg'; break;
+                    case 'image/gif':   $ext = 'jpg'; break;
+                    case 'image/png':   $ext = 'png'; break;
+                    case 'image/tiff':  $ext = 'tif'; break;
+                    default:            $ext = ''; break;
+                }
+                
+                if ($ext)
+                {   
+                       
+                        $vista="$placa.$ext";
+                        
+                        move_uploaded_file($_FILES['foto']['tmp_name'], $vista);
+                        
+        
+                        if(file_exists($ruta) || @mkdir($ruta)){
+                            
+                            
+                                if (!rename("$vista", "$ruta/$vista")){
+
+                                    $datosC['foto'] = "Error";
+                                    $result = $this->empleadosM->registrarEmpleadosM($datosC);  
+
+                                }else{
+
+                                    $datosC['foto'] = $vista;
+                                    $result = $this->empleadosM->registrarEmpleadosM($datosC);  
+
+                                }
+                                
+                        }
+                        else{
+                            $datosC['foto'] = "ErrorCarpeta";
+                            $result = $this->empleadosM->registrarEmpleadosM($datosC); 
+        
+                        }
+                        echo "<br>";
+                            
+                          
+                            
+                    
+                    
+                }
+                else {
+                    $datosC['foto'] = "Noimagen";
+                    $result = $this->empleadosM->registrarEmpleadosM($datosC);
+                }        
+            }
+            else{
+                $datosC['foto'] = "Noimagen";
+                $result = $this->empleadosM->registrarEmpleadosM($datosC);
+            }
+
+            echo "$result";
+
+            
         }
     }
 

@@ -33,7 +33,7 @@ $registrar->registrarEmpleadosC();
 			*Todos los campos son obligatorios
     	</blockquote>
 				
-			<form method="post" id="registro">
+			<form method="post" id="registro" enctype='multipart/form-data'>
 				<div class="input-field col l6 col-m6 s12">
 					<i class="material-icons prefix">person_outline</i>
 					<input type="text" name="dni" id="dni">
@@ -74,7 +74,7 @@ $registrar->registrarEmpleadosC();
 				<div class="file-field input-field col l6 m6 s12">
 					<div class="btn waves-effect waves-yellow">
 						<span>Foto</span>
-						<input type="file" >
+						<input type="file" name="foto" size='10'>
 					</div>
 					<div class="file-path-wrapper">
 						<input class="file-path validate" type="text" placeholder="Añadir foto  De Vehiculo o Imagen de referencia">

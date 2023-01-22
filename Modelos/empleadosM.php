@@ -3,18 +3,20 @@ require_once "conexionBD.php";
 
 class EmpleadosM extends ConexionBD{
  
-    public function registrarEmpleadosM($datosC, $tablaBD = 'empleados'){
+    public function registrarEmpleadosM($datosC, $tablaBD = 'vehiculo'){
         $cbd = ConexionBD::cBD();
-        $nombre = $datosC['nombre'];
-        $apellido = $datosC['apellido'];
-        $email = $datosC['email'];
-        $salario = $datosC['salario'];
-        $puesto = $datosC['puesto'];
+        $dni = $datosC['dni'];
+        $placa = $datosC['placa'];
+        $modelo = $datosC['modelo'];
+        $Detalles = $datosC['Detalles'];
+        $tipo = $datosC['tipo'];
+        $foto = $datosC['foto'];
+
         $query = "INSERT INTO $tablaBD VALUES 
-            (Null,'$nombre', '$apellido', '$email', '$puesto', '$salario')";
+            (Null,'$dni', '$placa', '$modelo', '$Detalles', '$tipo', '$foto')";
 
         $result = $cbd->query($query);
-
+echo "$result";
         return $result;
     }
 
