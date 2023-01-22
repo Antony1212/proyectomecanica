@@ -5,13 +5,14 @@ class EmpleadosC {
     }
 
     public function registrarEmpleadosC(){
-        if(isset($_POST['nombreR'])){
+        if(isset($_POST['dni'])){
             $datosC =array();
-            $datosC['nombre'] = $_POST['nombreR'];
-            $datosC['apellido'] = $_POST['apellidoR'];
-            $datosC['email'] = $_POST['emailR'];
-            $datosC['puesto'] = $_POST['puestoR'];
-            $datosC['salario'] = $_POST['salarioR'];
+            $datosC['dni'] = $_POST['dni'];
+            $datosC['placa'] = $_POST['placa'];
+            $datosC['modelo'] = $_POST['modelo'];
+            $datosC['Detalles'] = $_POST['Detalles'];
+            $datosC['tipo'] = $_POST['tipo'];
+             $datosC['foto'] = $_POST['foto'];
 
             $result = $this->empleadosM->registrarEmpleadosM($datosC);
          

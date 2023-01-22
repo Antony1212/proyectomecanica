@@ -2,14 +2,29 @@
     require_once "conexionBD.php";
 
     class AdminM extends ConexionBD{
-        public function IngresoM($datosC, $tablaBD = 'administradores'){
+        static public function IngresoM($datosC, $tablaBD){
             $cbd = ConexionBD::cBD();
             $usuario = $datosC['usuario'];
-            $clave = $datosC['clave'];
-            $query = "SELECT usuario, clave FROM $tablaBD 
-                WHERE usuario='$usuario' AND clave='$clave'";
+            $contraseña = $datosC['contraseña'];
+
+            $query = "SELECT * FROM $tablaBD WHERE correo='$usuario'";
+            
             $result = $cbd->query($query);
-            return $result->fetch_array(MYSQLI_ASSOC);
+              
+
+            return $result;
+        }
+        static public function IngresoplacaM($datosC, $tablaBD){
+            $cbd = ConexionBD::cBD();
+            $usuario = $datosC['usuario'];
+            
+
+            $query = "SELECT * FROM $tablaBD WHERE Placa_vehiculo='$usuario'";
+            
+            $result = $cbd->query($query);
+              
+
+            return $result;
         }
         static public function RegistroM($datosC, $tablaBD){
             $cbd = ConexionBD::cBD();
