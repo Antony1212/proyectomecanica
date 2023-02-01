@@ -13,69 +13,112 @@ class EmpleadosC {
             $datosC['Detalles'] = $_POST['Detalles'];
             $datosC['tipo'] = $_POST['tipo'];
 
-
-            $placa=$_POST['placa'];
-            $ruta="Vistas/css/imagenes";
-            if ($_FILES)
-            {
-                $name = $_FILES['foto']['name'];
-                switch ($_FILES['foto']['type'])
-                {
-                    case 'image/jpeg':  $ext = 'jpg'; break;
-                    case 'image/jpeg':  $ext = 'jpg'; break;
-                    case 'image/gif':   $ext = 'jpg'; break;
-                    case 'image/png':   $ext = 'png'; break;
-                    case 'image/tiff':  $ext = 'tif'; break;
-                    default:            $ext = ''; break;
-                }
+            
+            $result = $this->empleadosM->consultarEmpleadosM($datosC);
+            
+            if ($result->num_rows) {
                 
-                if ($ext)
-                {   
-                       
-                        $vista="$placa.$ext";
-                        
-                        move_uploaded_file($_FILES['foto']['tmp_name'], $vista);
-                        
-        
-                        if(file_exists($ruta) || @mkdir($ruta)){
-                            
-                            
-                                if (!rename("$vista", "$ruta/$vista")){
-
-                                    $datosC['foto'] = "Error";
-                                    $result = $this->empleadosM->registrarEmpleadosM($datosC);  
-
-                                }else{
-
-                                    $datosC['foto'] = $vista;
-                                    $result = $this->empleadosM->registrarEmpleadosM($datosC);  
-
+                ?>
+                <script>
+                    $.confirm({
+                        theme:'Material',
+                        title: 'Error',
+                        content: "La Placa Esta Registrada Consulte Los Vehiculos",
+                        type: 'red',
+                        typeAnimated: true,
+                        columnClass: 'medium',
+                        buttons: {
+                            tryAgain: {
+                                text: 'Ingresar Nuevamente',
+                                btnClass: 'btn-red',
+                                action: function(){
+                                    location.href="index.php?ruta=registrarplaca";
                                 }
+                            },
+                            tryAgain1: {
+                                text: 'Consultar Vehiculo',
                                 
-                        }
-                        else{
-                            $datosC['foto'] = "ErrorCarpeta";
-                            $result = $this->empleadosM->registrarEmpleadosM($datosC); 
-        
-                        }
-                        echo "<br>";
+                                action: function(){
+                                    location.href="index.php?ruta=Consultavehiculo";
+                                }
+                            },
                             
-                          
+            
+                        }
+                        });
+                </script>
+            <?php
+
+            }else{
+
+
+                $placa=$_POST['placa'];
+                $ruta="Vistas/css/imagenes";
+
+
+            
+                if ($_FILES)
+                {
+                    $name = $_FILES['foto']['name'];
+                    switch ($_FILES['foto']['type'])
+                    {
+                        case 'image/jpeg':  $ext = 'jpg'; break;
+                        case 'image/jpeg':  $ext = 'jpg'; break;
+                        case 'image/gif':   $ext = 'jpg'; break;
+                        case 'image/png':   $ext = 'png'; break;
+                        case 'image/tiff':  $ext = 'tif'; break;
+                        default:            $ext = ''; break;
+                    }
+                    
+                    if ($ext)
+                    {   
+                        
+                            $vista="$placa.$ext";
                             
-                    
-                    
+                            move_uploaded_file($_FILES['foto']['tmp_name'], $vista);
+                            
+            
+                            if(file_exists($ruta) || @mkdir($ruta)){
+                                
+                                
+                                    if (!rename("$vista", "$ruta/$vista")){
+                                        echo "llego";
+                                        $datosC['foto'] = "Error";
+                                        $result = $this->empleadosM->registrarEmpleadosM($datosC);  
+
+                                    
+
+                                    }else{
+                                        echo "llego";
+                                        $datosC['foto'] = $vista;
+                                        $result = $this->empleadosM->registrarEmpleadosM($datosC);  
+                                        echo "$result";
+                                    }
+                                    
+                            }
+                            else{
+                                
+                                $datosC['foto'] = "ErrorCarpeta";
+                                $result = $this->empleadosM->registrarEmpleadosM($datosC); 
+            
+                            }
+    
+                    }
+                    else {
+                        $datosC['foto'] = "Noimagen";
+                        $result = $this->empleadosM->registrarEmpleadosM($datosC);
+                    }        
                 }
-                else {
+                else{
                     $datosC['foto'] = "Noimagen";
                     $result = $this->empleadosM->registrarEmpleadosM($datosC);
-                }        
-            }
-            else{
-                $datosC['foto'] = "Noimagen";
-                $result = $this->empleadosM->registrarEmpleadosM($datosC);
+                }
+
             }
 
-            echo "$result";
+            
+
+            
 
             
         }

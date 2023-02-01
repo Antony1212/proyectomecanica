@@ -16,8 +16,18 @@ class EmpleadosM extends ConexionBD{
             (Null,'$dni', '$placa', '$modelo', '$Detalles', '$tipo', '$foto')";
 
         $result = $cbd->query($query);
-echo "$result";
+    
         return $result;
+    }
+
+    public function consultarEmpleadosM($datosC, $tablaBD = 'vehiculo'){
+        $cbd = ConexionBD::cBD();
+        $placa = $datosC['placa'];
+
+        $query = "SELECT * FROM $tablaBD WHERE Placa_vehiculo=$placa";
+        $res= $cbd->query($query);
+        echo "$query";
+        return $res;
     }
 
     public function mostrarEmpleadosM($tablaBD = 'empleados'){

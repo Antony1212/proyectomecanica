@@ -16,14 +16,13 @@
         }
         static public function IngresoplacaM($datosC, $tablaBD){
             $cbd = ConexionBD::cBD();
-            $usuario = $datosC['usuario'];
+            $usuario = $datosC['placa'];
             
 
             $query = "SELECT * FROM $tablaBD WHERE Placa_vehiculo='$usuario'";
             
             $result = $cbd->query($query);
-              
-
+            
             return $result;
         }
         static public function RegistroM($datosC, $tablaBD){
@@ -44,6 +43,29 @@
             
             $query="INSERT INTO `usuario`(`id_usuario`, `correo`, `nombre`, `apellido`, `Dni`, `roll`, `fecharegistro`, `direccion`, `Departamento`) 
             VALUES ($dni,'$correo','$nombres','$apellidos','$password','Cliente','$fecha_nacimiento','$dirreccion','$departamento')";
+            
+            $result = $cbd->query($query);
+
+            return $result;
+            
+            
+        }
+
+        static public function RegistroEmpresaM($datosC, $tablaBD){
+            $cbd = ConexionBD::cBD();
+
+            $nombres =   $datosC['nombres'];
+           
+            $fecha_nacimiento =   $datosC['fecha_nacimiento'];
+            $dirreccion =   $datosC['dirreccion'];
+            $departamento =   $datosC['departamento'];
+            $correo =   $datosC['correo'];
+            
+            $dni =  $datosC['dni'];
+            $password = password_hash($dni, PASSWORD_DEFAULT);
+            
+            $query="INSERT INTO `usuario`(`id_usuario`, `correo`, `nombre`, `apellido`, `Dni`, `roll`, `fecharegistro`, `direccion`, `Departamento`) 
+            VALUES ($dni,'$correo','$nombres','','$password','Empresa','$fecha_nacimiento','$dirreccion','$departamento')";
             
             $result = $cbd->query($query);
 

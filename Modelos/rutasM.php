@@ -2,23 +2,28 @@
 class RutasM{
     public function procesaRutasM($ruta){
         if( $ruta == "ingreso" || 
-            $ruta == 'empleados' || 
-            $ruta == 'registrar' ||
-            $ruta == 'registrarplaca' ||  
-            $ruta == 'registrarmecanico' || 
-            $ruta == 'ingresousuario' ||
-            
-            $ruta == 'salir' ||
-            $ruta == 'editar')
+        $ruta == 'empleados' || 
+        $ruta == 'registrar' ||
+        $ruta == 'asignacion' ||
+        $ruta == 'Principal' ||
+        $ruta == 'vehiculo' ||
+        $ruta == 'registrarempresa' ||
+        $ruta == 'registrarplaca' ||  
+        $ruta == 'registrarmecanico' || 
+        $ruta == 'ingresousuario' ||
+        $ruta == 'salir' ||
+        $ruta == 'editar')
         {
-            $pagina = "Vistas/modulos/".$ruta. ".php";
+            $pagina = "Vistas/Modulos/".$ruta. ".php";
         }
         else if($ruta == 'index'){
-            $pagina = "Vistas/modulos/ingreso.php";
+            $pagina = "Vistas/Modulos/ingreso.php";
         }
         else {
-            $pagina = "Vistas/modulos/ingreso.php";
+            $pagina = "Vistas/Modulos/ingreso.php";
         }
+        
+        
         return $pagina;
     }
 

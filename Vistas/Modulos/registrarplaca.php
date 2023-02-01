@@ -36,23 +36,23 @@ $registrar->registrarEmpleadosC();
 			<form method="post" id="registro" enctype='multipart/form-data'>
 				<div class="input-field col l6 col-m6 s12">
 					<i class="material-icons prefix">person_outline</i>
-					<input type="text" name="dni" id="dni">
+					<input type="text" name="dni" id="dni" required >
 					<label for="dni">Documento de identidad de dueño</label>
 				</div>
 				<div class="input-field col l6 col-m6 s12">
 					<i class="material-icons prefix">king_bed</i>
-					<input type="text" name="placa" id="placa">
+					<input type="text" name="placa" id="placa" required >
 					<label for="placa">Placa Del Vehiculo</label>
 				</div>
 				<div class="input-field col l6 col-m6 s12">
 					<i class="material-icons prefix">king_bed</i>
-					<input type="text" name="modelo" id="modelo">
+					<input type="text" name="modelo" id="modelo" required >
 					<label for="modelo">Modelo</label>
 				</div>
 
 				<div class="input-field col l6 col-m6 s12">
 				<i class="material-icons prefix">pending_actions</i>
-          			<textarea id="Detalles" class="materialize-textarea" name="Detalles"></textarea>
+          			<textarea id="Detalles" class="materialize-textarea" name="Detalles" required ></textarea>
           			<label for="Detalles">Detalles</label>
         		</div>
 
@@ -60,7 +60,7 @@ $registrar->registrarEmpleadosC();
 
 				<div class="input-field col l6 m6 s12">
 				<i class="material-icons prefix">engineering</i>
-					<select name="tipo">
+					<select name="tipo" required >
 						<option selected disabled>Tipo De Vehiculo</option>
 						<option value="1">	Autobús</option>
 						<option value="2">Camión</option>
@@ -74,7 +74,7 @@ $registrar->registrarEmpleadosC();
 				<div class="file-field input-field col l6 m6 s12">
 					<div class="btn waves-effect waves-yellow">
 						<span>Foto</span>
-						<input type="file" name="foto" size='10'>
+						<input type="file" name="foto" size='10' required >
 					</div>
 					<div class="file-path-wrapper">
 						<input class="file-path validate" type="text" placeholder="Añadir foto  De Vehiculo o Imagen de referencia">

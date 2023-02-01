@@ -15,7 +15,7 @@
 								<div class="row">
 									<div class="input-field col s12">
 										<i class="material-icons prefix">local_car_wash</i>
-										<input id="icon_prefix" type="text" class="validate" name="usuario">
+										<input id="icon_prefix" type="text" class="validate" name="placa">
 										<label for="icon_prefix">Placa De Vehiculo</label>
 									</div>
 									
@@ -34,7 +34,7 @@
 									</div>	
 									<div class="col s12">
 										
-										<button class="btn waves-effect waves-light" type="submit" name="action">Ingresar
+										<button class="btn waves-effect waves-light" type="submit" name="botton">Ingresar
 											<i class="material-icons right">login</i>
 										</button>
 									</div>
@@ -61,5 +61,7 @@
 
 <?php
 $ingreso = new AdminC();
-$ingreso->IngresoC();
+$ingreso->IngresoplacaC();
 ?>
+
+

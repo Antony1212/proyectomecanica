@@ -7,7 +7,7 @@ class AdminC{
     public function IngresoC(){
 
         if(isset($_SESSION['Ingreso'])) {
-            header("location: index.php?ruta=empleados");
+            header("location: index.php?ruta=Principal");
         }
 
         if(isset($_POST["usuario"] ))
@@ -60,7 +60,21 @@ class AdminC{
                     $username=$row[1];
                     $id_u=$row[0];
                     $roll=$row[5];
+                    if ( $roll=="mecanico") {
+                        $rango=$row[9];
+                        $_SESSION['rango']=$rango;
+                    }elseif ($roll=="Empresa") {
+                        $_SESSION['nombre']=$row[2];
+                    
+                    }elseif ($roll=="Cliente") {
+                        $_SESSION['nombre']=$row[2];
+                    $_SESSION['apellido']=$row[3];
+                    }elseif ($roll=="administrador") {
+                        $_SESSION['nombre']=$row[2];
+                    $_SESSION['apellido']=$row[3];
+                    }
 
+                    
 
                     
                    
@@ -68,13 +82,12 @@ class AdminC{
                     $_SESSION['username']=$username;
                     $_SESSION['id_u']=$id_u;
                     $_SESSION['roll'] =$roll;
-                    $_SESSION['nombre']=$row[2];
-                    $_SESSION['apellido']=$row[3];
+                    
                     session_start();
                     setcookie('username',$_SESSION['username'],time()+ 5);
                     $GLOBALS['entrada']=true;
                     $_SESSION['Ingreso']=true;
-                    header("location: index.php?ruta=empleados");
+                    header("location: index.php?ruta=Principal");
                                
                         
                         
@@ -111,6 +124,14 @@ class AdminC{
             }
         }
 
+        
+    }
+
+    public function IngresoplacaC(){
+        if(isset($_SESSION['Ingreso'])) {
+            header("location: index.php?ruta=vehiculo");
+        }
+
         if(isset($_POST["placa"] ))
         {
             
@@ -123,14 +144,35 @@ class AdminC{
             $inicio = AdminM::IngresoplacaM($datosC, $tablaBD);
               
 
-            if (!$inicio) {
+            if ($inicio->num_rows)
+            {
+                
+               
+                $row = $inicio->fetch_array(MYSQLI_NUM);
+                $inicio->close();
+
+                $username=$row[1];
+                    $id_u=$row[0];
+                    
+                    $_SESSION['username']=$username;
+                    $_SESSION['id_u']=$id_u;
+                    $_SESSION['roll'] ="vehiculo";
+                    $_SESSION['nombre']=$row[2];
+                    $_SESSION['apellido']=$row[6];
+                    session_start();
+                    setcookie('username',$_SESSION['username'],time()+ 5);
+                    $GLOBALS['entrada']=true;
+                    $_SESSION['Ingreso']=true;
+                    header("location: index.php?ruta=empleados");
+
+            }else{
 
                 ?>
                 <script>
                     $.confirm({
                         theme:'Material',
                         title: 'Error',
-                        content: "El Vehiculo No Existe",
+                        content: "El Vehiculo No Existe O no Esta Registrado",
                         type: 'red',
                         typeAnimated: true,
                         columnClass: 'medium',
@@ -149,28 +191,9 @@ class AdminC{
                 </script>
             <?php
 
-            }elseif ($inicio->num_rows)
-            {
-                
-               
-                $row = $inicio->fetch_array(MYSQLI_NUM);
-                $inicio->close();
-
-                   
-                            
-                    
-                   
-                    $_SESSION['roll'] ="Vehiculo";
-                    $_SESSION['username']=$row[1];
-                    $_SESSION['modelo']=$row[2];
-                    session_start();
-                    setcookie('username',$_SESSION['username'],time()+ 5);
-                    $GLOBALS['entrada']=true;
-                    $_SESSION['Ingreso']=true;
-                    header("location: index.php?ruta=empleados");
-
             }
         }
+
     }
 
     public function RegistroC(){
@@ -230,6 +253,98 @@ class AdminC{
                                 theme:'Material',
                                 title: 'Cliente Registrado',
                                 content: "El Cliente se registro correctamente",
+                                type: 'green',
+                                typeAnimated: true,
+                                columnClass: 'medium',
+                                buttons: {
+                                    tryAgain: {
+                                        text: 'Volver Al Menu Principal ',
+                                        btnClass: 'btn-blue',
+                                        action: function(){
+                                            location.href="index.php?ruta=empleados";
+                                        }
+                                    },
+                                    trypago: {
+                                        text: 'Ingresar Vehiculo',
+                                        btnClass: 'btn-blue',
+                                        action: function(){
+                                            location.href="index.php?ruta=registrarplaca";
+                                        }
+                                    },
+                    
+                                }
+                            });
+                        </script>
+                    <?php
+
+                    }
+ 
+                    
+                    
+                    
+
+            }
+
+        
+    }
+
+    public function RegistroEmpresaC(){
+
+        if(isset($_POST["correo"])){
+            
+            $a=$_POST["dni"];
+                    $datosC = array(    
+                                "nombres"=>$_POST["nombres"],
+                                
+                                "fecha_nacimiento"=>$_POST["fecha_nacimiento"], 
+                                "dirreccion"=>$_POST["dirreccion"],
+                                "departamento"=>$_POST["departamento"], 
+                                "correo"=>$_POST["correo"], 
+                                "dni"=>$_POST["dni"]);
+                                
+                    $tablaBD = "usuario";
+
+                    $res = AdminM::RegistroEmpresaM($datosC, $tablaBD);
+
+                    if (!$res) {
+                        ?>
+                        <script>
+                            $.confirm({
+                                theme:'Material',
+                                title: 'Error',
+                                content: "La Empresa Ya Esta Registrada",
+                                type: 'red',
+                                typeAnimated: true,
+                                columnClass: 'medium',
+                                buttons: {
+                                    tryAgain: {
+                                        text: 'Volver Al Menu Principal ',
+                                        btnClass: 'btn-blue',
+                                        action: function(){
+                                            location.href="index.php?ruta=buscarempresa";
+                                        }
+                                    },
+                                    trypago: {
+                                        text: 'Ingresar Nuevos Datos',
+                                        btnClass: 'btn-blue',
+                                        action: function(){
+                                            location.href="index.php?ruta=registrarempresa";
+                                        }
+                                    },
+                    
+                                }
+                        });
+                </script>
+            <?php
+
+                    }else{
+
+                    ?>
+                        <script>
+                            $.confirm({
+                                theme:'Material',
+                                title: 'Cliente Registrado',
+                                content: "La Empresa se registro correctamente",
                                 type: 'green',
                                 typeAnimated: true,
                                 columnClass: 'medium',

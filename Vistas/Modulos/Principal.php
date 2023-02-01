@@ -1,7 +1,7 @@
 <?php
-//$empleados = new EmpleadosC();
-//$pagina = $empleados->mostrarEmpleadosC();
-//	$empleados->borrarEmpleadoC();
+$empleados = new EmpleadosC();
+$pagina = $empleados->mostrarEmpleadosC();
+$empleados->borrarEmpleadoC();
 ?> <!-- Vistas/Modulos/empleados.php -->
 <div class="row">
 
