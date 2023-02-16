@@ -14,9 +14,9 @@ class EmpleadosC {
             $datosC['tipo'] = $_POST['tipo'];
 
             
-            $result = $this->empleadosM->consultarEmpleadosM($datosC);
+            $res = $this->empleadosM->consultarEmpleadosM($datosC);
             
-            if ($result->num_rows) {
+            if (!$res) {
                 
                 ?>
                 <script>
@@ -82,17 +82,18 @@ class EmpleadosC {
                                 
                                 
                                     if (!rename("$vista", "$ruta/$vista")){
-                                        echo "llego";
+                                        
                                         $datosC['foto'] = "Error";
                                         $result = $this->empleadosM->registrarEmpleadosM($datosC);  
-
+                                        $placa = $this->empleadosM->registrarReparacionM($datosC);  
+                                        
                                     
 
                                     }else{
-                                        echo "llego";
+                                        
                                         $datosC['foto'] = $vista;
                                         $result = $this->empleadosM->registrarEmpleadosM($datosC);  
-                                        echo "$result";
+                                        $placa = $this->empleadosM->registrarReparacionM($datosC);
                                     }
                                     
                             }
@@ -100,18 +101,20 @@ class EmpleadosC {
                                 
                                 $datosC['foto'] = "ErrorCarpeta";
                                 $result = $this->empleadosM->registrarEmpleadosM($datosC); 
-            
+                                $placa = $this->empleadosM->registrarReparacionM($datosC);
                             }
     
                     }
                     else {
                         $datosC['foto'] = "Noimagen";
                         $result = $this->empleadosM->registrarEmpleadosM($datosC);
+                        $placa = $this->empleadosM->registrarReparacionM($datosC);
                     }        
                 }
                 else{
                     $datosC['foto'] = "Noimagen";
                     $result = $this->empleadosM->registrarEmpleadosM($datosC);
+                    $placa = $this->empleadosM->registrarReparacionM($datosC);
                 }
 
             }
@@ -130,12 +133,79 @@ class EmpleadosC {
         return $result;
     }
 
+    public function mostrarEquiposC(){
+        $result = $this->empleadosM->mostrarEquiposM();
+        return $result;
+    }
+
+    public function mostrarRoll1C(){
+        $result = $this->empleadosM->mostrarRoll1M();
+        return $result;
+    }
+
+    public function detallevehiculoC(){
+        if(isset($_GET['reparacion'])){
+
+            $datosC =array();
+            $datosC['reparacion'] = $_GET['reparacion'];
+            $result = $this->empleadosM->detallevehiculoM($datosC);
+            
+            return $result;
+        }
+        
+    }
+
+    public function mostrarVehiculos1C(){
+        $result = $this->empleadosM->mostrarVehiculos1M();
+        return $result;
+    }
+
     //editar empleados
     public function editarEmpleadoC(){
         if(isset($_GET['id'])){
             $datosC = array('id'=>$_GET['id']);
             $result = $this->empleadosM->editarEmpleadoM($datosC);
             return $result;
+        }
+    }
+
+    public function AsignarGrupoC(){
+        if(isset($_GET['reparacion'])&&isset($_GET['equipo'])){
+            $datosC = array(
+                'reparacion'=>$_GET['reparacion'],
+                'equipo'=>$_GET['equipo']
+            );
+            $result = $this->empleadosM->AsignarGrupoM($datosC);
+            ?>
+                <script>
+                    $.confirm({
+                        theme:'Material',
+                        title: 'Exito',
+                        content: "El Vehiculo Se Asigno Correctamente a El Equipo de mecanicos",
+                        type: 'green',
+                        typeAnimated: true,
+                        columnClass: 'medium',
+                        buttons: {
+                            tryAgain: {
+                                text: 'Asignar Otro Vehiculo',
+                                btnClass: 'btn-bue',
+                                action: function(){
+                                    location.href="index.php?ruta=asignacion";
+                                }
+                            },
+                            tryAgain1: {
+                                text: 'Volver Al Menu',
+                                
+                                action: function(){
+                                    location.href="index.php?ruta=Vehiculo";
+                                }
+                            },
+                            
+            
+                        }
+                        });
+                </script>
+            <?php
         }
     }
 

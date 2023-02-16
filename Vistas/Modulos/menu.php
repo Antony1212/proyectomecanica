@@ -121,6 +121,7 @@
     $C=$_SESSION['username'];
     $N=$_SESSION['nombre'];
     $A=$_SESSION['apellido'];
+    
   ?>
   <ul id="sidenav-left" class="sidenav sidenav-fixed" style="transform: translateX(-105%);">
   <li>
@@ -301,12 +302,33 @@
       </ul>
 
   <?php
-   }if ($roll == "mecanico")
+   }if ($roll == "Mecanico")
    {
+    $empleados = new EmpleadosC();
+    $o22 = $empleados->mostrarRoll1C();
+
+
+
     $C=$_SESSION['username'];
     $N=$_SESSION['nombre'];
     $A=$_SESSION['apellido'];
-    $R=$_SESSION['rango'];
+    $F=$_SESSION['foto'];
+    $Rango1=$_SESSION['rango'];
+    
+    switch ($Rango1) {
+      case '1':
+        $R="Jefe De Mecanicos";
+        break;
+      case '2':
+        $R="Mecanico";
+        break;
+      case '3':
+        $R="Practicante de mecanico";
+        break;
+     
+    }
+    
+    
   ?>
   <ul id="sidenav-left" class="sidenav sidenav-fixed" style="transform: translateX(-105%);">
   <li>
@@ -315,11 +337,14 @@
 					<img src="Vistas/css/imagenes/fondopequeño.jpg" alt="">
 					</div>
 					<a href="#" class="circle">
-						<img src="Vistas/css/imagenes/logo.png" alt="" class="circle"></a>
+						<img src="Vistas/css/imagenes/<?="$F"?>" alt="" class="circle"></a>
                 <a href="#name"><span class="black-text name"><b><?="$N $A"?></b></span></a>
                 <a href="#email"><span class="black-text email"><b><?="$C"?></b></span></a>
-      					<a href="#roll"><span class="black-text email"><b><?="Mecanico $R"?></b></span></a>
-				</div>
+      					<a href="#roll"><span class="black-text name"><b><?="$R"?></b></span></a>
+              <?php foreach($o22 as $key => $l123): ?>
+                <a href="#roll"><span class="black-text email"><b><?=$l123['Nombregrupo']?></b></span></a>
+              <?php endforeach; ?> 
+              </div>
 			</li>   
   
       
@@ -330,10 +355,10 @@
             <div class="search-results"></div>
           </div>
 		  
-            <!--<li class="bold waves-effect col s12"><a class="collapsible-header" tabindex="0">Pages<i class="material-icons chevron">chevron_left</i></a>
+           <li class="bold waves-effect col s12"><a class="collapsible-header" tabindex="0">Vehiculos<i class="material-icons chevron">directions_car</i></a>
               <div class="collapsible-body" >
                 <ul>
-                  <li><a href="/pages/admin-dashboard" class="waves-effect active">Dashboard<i class="material-icons">web</i></a></li>
+                  <li><a href="index.php?ruta=Vehiculos" class="waves-effect active">Vehiculos Asignados<i class="material-icons">commute</i></a></li>
                   <li><a href="/pages/admin-fixed-chart" class="waves-effect">Fixed Chart<i class="material-icons">list</i></a></li>
                   <li><a href="/pages/admin-grid" class="waves-effect">Grid<i class="material-icons">dashboard</i></a></li>
                   <li><a href="/pages/admin-chat" class="waves-effect">Chat<i class="material-icons">chat</i></a></li>
@@ -342,7 +367,7 @@
             </li>
 			
 			
-            <li class="bold waves-effect  col s12"><a class="collapsible-header" tabindex="0">Charts<i class="material-icons chevron">chevron_left</i></a>
+             <!--<li class="bold waves-effect  col s12"><a class="collapsible-header" tabindex="0">Charts<i class="material-icons chevron">chevron_left</i></a>
               <div class="collapsible-body">0
                 <ul>
                   <li><a href="/pages/admin-line-charts" class="waves-effect">Line Charts<i class="material-icons">show_chart</i></a></li>

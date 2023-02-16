@@ -60,9 +60,13 @@ class AdminC{
                     $username=$row[1];
                     $id_u=$row[0];
                     $roll=$row[5];
-                    if ( $roll=="mecanico") {
+                    if ( $roll=="Mecanico") {
                         $rango=$row[9];
+                        $_SESSION['foto']=$row[11];
+                        $_SESSION['nombre']=$row[2];
+                        $_SESSION['apellido']=$row[3];
                         $_SESSION['rango']=$rango;
+                        $_SESSION['Equipo']=$row[10];
                     }elseif ($roll=="Empresa") {
                         $_SESSION['nombre']=$row[2];
                     
@@ -71,7 +75,7 @@ class AdminC{
                     $_SESSION['apellido']=$row[3];
                     }elseif ($roll=="administrador") {
                         $_SESSION['nombre']=$row[2];
-                    $_SESSION['apellido']=$row[3];
+                        $_SESSION['apellido']=$row[3];
                     }
 
                     
@@ -246,6 +250,165 @@ class AdminC{
             <?php
 
                     }else{
+
+                    ?>
+                        <script>
+                            $.confirm({
+                                theme:'Material',
+                                title: 'Cliente Registrado',
+                                content: "El Cliente se registro correctamente",
+                                type: 'green',
+                                typeAnimated: true,
+                                columnClass: 'medium',
+                                buttons: {
+                                    tryAgain: {
+                                        text: 'Volver Al Menu Principal ',
+                                        btnClass: 'btn-blue',
+                                        action: function(){
+                                            location.href="index.php?ruta=empleados";
+                                        }
+                                    },
+                                    trypago: {
+                                        text: 'Ingresar Vehiculo',
+                                        btnClass: 'btn-blue',
+                                        action: function(){
+                                            location.href="index.php?ruta=registrarplaca";
+                                        }
+                                    },
+                    
+                                }
+                            });
+                        </script>
+                    <?php
+
+                    }
+ 
+                    
+                    
+                    
+
+            }
+
+        
+    }
+
+    public function RegistroMecanicoC(){
+echo "hola";
+        if(isset($_POST["correo"])){
+            
+            $a=$_POST["dni"];
+                    $datosC = array(    
+                                "nombres"=>$_POST["nombres"],
+                                "apellidos"=>$_POST["apellidos"], 
+                                "fecha_nacimiento"=>$_POST["fecha_nacimiento"], 
+                                "dirreccion"=>$_POST["dirreccion"], 
+                                "Equipo"=>$_POST["Equipo"],
+                                "Rango"=>$_POST["Rango"],
+                                "correo"=>$_POST["correo"], 
+                                "dni"=>$_POST["dni"]);
+                                
+                    $tablaBD = "usuario";
+
+                    $res = AdminM::RegistroMecanicoM($datosC, $tablaBD);
+
+                    if (!$res) {
+                        ?>
+                        <script>
+                            $.confirm({
+                                theme:'Material',
+                                title: 'Error',
+                                content: "Los Datos Ingresados Ya Fueron Registrado",
+                                type: 'red',
+                                typeAnimated: true,
+                                columnClass: 'medium',
+                                buttons: {
+                                    tryAgain: {
+                                        text: 'Volver Al Menu Principal ',
+                                        btnClass: 'btn-blue',
+                                        action: function(){
+                                            location.href="index.php?ruta=buscarcliente";
+                                        }
+                                    },
+                                    trypago: {
+                                        text: 'Ingresar Nuevos Datos',
+                                        btnClass: 'btn-blue',
+                                        action: function(){
+                                            location.href="index.php?ruta=registrar";
+                                        }
+                                    },
+                    
+                                }
+                        });
+                </script>
+            <?php
+
+                    }else{
+
+                        $placa=$_POST['dni'];
+                        $ruta="Vistas/css/imagenes";
+
+                        if ($_FILES)
+                        {
+                            $name = $_FILES['foto']['name'];
+                            switch ($_FILES['foto']['type'])
+                            {
+                                case 'image/jpeg':  $ext = 'jpg'; break;
+                                case 'image/jpeg':  $ext = 'jpg'; break;
+                                case 'image/gif':   $ext = 'jpg'; break;
+                                case 'image/png':   $ext = 'png'; break;
+                                case 'image/tiff':  $ext = 'tif'; break;
+                                default:            $ext = ''; break;
+                            }
+                            
+                            if ($ext)
+                            {   
+                                
+                                    $vista="$placa.$ext";
+                                    
+                                    move_uploaded_file($_FILES['foto']['tmp_name'], $vista);
+                                    
+                    
+                                    if(file_exists($ruta) || @mkdir($ruta)){
+                                        
+                                        
+                                            if (!rename("$vista", "$ruta/$vista")){
+                                                
+                                                $datosC['foto'] = "Error";
+                                                $result = AdminM::RegistroFotoMecanicoM($datosC);  
+                                                $placa = AdminM::RegistroFotoMecanicoM($datosC);  
+                                                
+                                               
+                                                
+                                            }else{
+                                                
+                                                $datosC['foto'] = $vista;
+                                                $result = AdminM::RegistroFotoMecanicoM($datosC);  
+                                                $placa = AdminM::RegistroFotoMecanicoM($datosC);
+                                            }
+                                            
+                                    }
+                                    else{
+                                        
+                                        $datosC['foto'] = "ErrorCarpeta";
+                                        $result = AdminM::RegistroFotoMecanicoM($datosC); 
+                                        $placa = AdminM::RegistroFotoMecanicoM($datosC);
+                                    }
+            
+                            }
+                            else {
+                                
+                                $datosC['foto'] = "Noimagen";
+                                $result = AdminM::RegistroFotoMecanicoM($datosC);
+                                $placa = AdminM::RegistroFotoMecanicoM($datosC);
+                            }        
+                        }
+                        else{
+                            
+                            $datosC['foto'] = "Noimagen";
+                            $result = AdminM::RegistroFotoMecanicoM($datosC);
+                            $placa = AdminM::RegistroFotoMecanicoM($datosC);
+                        }
+
 
                     ?>
                         <script>

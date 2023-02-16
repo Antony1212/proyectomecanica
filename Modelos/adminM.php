@@ -35,9 +35,6 @@
             $departamento =   $datosC['departamento'];
             $correo =   $datosC['correo'];
             $apellidos =   $datosC['apellidos'];
-            $apellidos =   $datosC['apellidos'];
-            $apellidos =   $datosC['apellidos'];
-            $apellidos =   $datosC['apellidos'];
             $dni =  $datosC['dni'];
             $password = password_hash($dni, PASSWORD_DEFAULT);
             
@@ -47,6 +44,47 @@
             $result = $cbd->query($query);
 
             return $result;
+            
+            
+        }
+
+        static public function RegistroMecanicoM($datosC, $tablaBD){
+            $cbd = ConexionBD::cBD();
+
+            $nombres =   $datosC['nombres'];
+            $apellidos =   $datosC['apellidos'];
+            $fecha_nacimiento =   $datosC['fecha_nacimiento'];
+            $dirreccion =   $datosC['dirreccion'];
+            $correo =   $datosC['correo'];
+            $Equipo =   $datosC['Equipo'];
+            $Rango =   $datosC['Rango'];
+            $dni =  $datosC['dni'];
+            $password = password_hash($dni, PASSWORD_DEFAULT);
+            
+            
+            $query="INSERT INTO `usuario`(`id_usuario`, `correo`, `nombre`, `apellido`, `Dni`, `roll`, `fecharegistro`, `direccion`, `rango`, `Equipo`) 
+            VALUES ($dni,'$correo','$nombres','$apellidos','$password','Mecanico','$fecha_nacimiento','$dirreccion','$Rango','$Equipo')";
+            
+            $result = $cbd->query($query);
+           
+           return $result;
+            
+            
+        }
+        static public function RegistroFotoMecanicoM($datosC){
+            $cbd = ConexionBD::cBD();
+
+           
+            $foto =  $datosC['foto'];
+            $dni =  $datosC['dni'];
+           
+            
+            
+            $query="UPDATE `usuario` SET `foto`='$foto' WHERE id_usuario='$dni'";
+            
+            $result = $cbd->query($query);
+           
+           return $result;
             
             
         }

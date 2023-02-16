@@ -1,7 +1,7 @@
 <?php
-$registrar = new EmpleadosC();
+$registrar = new AdminC();
 //$pagina = $empleados->mostrarEmpleadosC();
-$registrar->registrarEmpleadosC();
+$registrar->RegistroMecanicoC();
 ?>
 
 <div class="row">
@@ -34,7 +34,7 @@ $registrar->registrarEmpleadosC();
 			*Todos los campos son obligatorios
     	</blockquote>
 				
-			<form method="post" id="registro">
+			<form method="post" id="registro" enctype='multipart/form-data'>
 				<div class="input-field col l6 col-m6 s12">
 					<i class="material-icons prefix">credit_card</i>
 					<input type="text" name="dni" id="dni" required>
@@ -50,6 +50,12 @@ $registrar->registrarEmpleadosC();
 					<input type="text" name="apellidos" id="apellidos">
 					<label for="apellidos">Apellidos</label>
 				</div>
+				<div class="input-field col l6 m6">
+					<i class="material-icons prefix">email</i>
+					<input type="email" name="correo" id="correo" class="validate">
+					<label for="correo">Correo</label>
+					<span class="helper-text" data-error="Escriba un correo válido." data-success="Correo válido">Su correo es muy importante para contactarlo</span>
+				</div>
 				<div class="clearfix"></div>
 				<div class="input-field col l4 col-m4 s12">
 					<i class="material-icons prefix">date_range</i>
@@ -58,17 +64,22 @@ $registrar->registrarEmpleadosC();
 				</div>
 				<div class="input-field col l4 m4 s12">
 					<i class="material-icons prefix">directions</i>
-					<input type="text" name="lugar_nacimiento" id="lugar_nacimiento">
-					<label for="lugar_nacimiento">Direccion</label>
+					<input type="text" name="dirreccion" id="dirreccion">
+					<label for="dirreccion">Direccion</label>
 				</div>
 				<div class="input-field col l4 m4 s12">
 					<i class="material-icons prefix">groups_2</i>
-					<select name="Equipo">
+					<select class="icons" name="Equipo">
 						<option selected disabled>Asignar a un equipo</option>
-						<option value="1">grupo 1</option>
-						<option value="2">grupo 2</option>
-						<option value="3">grupo 3</option>
-						<option value="3">crear nuevo grupo</option>
+						<?php
+							$regis = new EmpleadosC();
+							$datos= $regis->mostrarEquiposC();
+						?>	
+						<?php foreach($datos as $key => $vao): ?>
+								
+							<option value=<?=$vao['id_grupo']?> data-icon="Vistas/css/imagenes/<?=$vao['Foto']?>"><?=$vao['Nombregrupo']?></option>
+								
+						<?php endforeach; ?>	
 					</select>
 				</div>
 				
@@ -76,7 +87,7 @@ $registrar->registrarEmpleadosC();
 
 				<div class="input-field col l6 m6 s12">
 				<i class="material-icons prefix">engineering</i>
-					<select name="pais">
+					<select name="Rango">
 						<option selected disabled>Rango De Mecanico</option>
 						<option value="1" >Jefe De Mecanicos</option>
 						<option value="2">Mecanico</option>
@@ -88,7 +99,7 @@ $registrar->registrarEmpleadosC();
 				<div class="file-field input-field col l6 m6 s12">
 					<div class="btn waves-effect waves-yellow">
 						<span>Foto</span>
-						<input type="file" multiple>
+						<input type="file" name="foto" size='10' multiple>
 					</div>
 					<div class="file-path-wrapper">
 						<input class="file-path validate" type="text" placeholder="Añadir foto  De Mecanico">

@@ -62,11 +62,11 @@ $registrar->registrarEmpleadosC();
 				<i class="material-icons prefix">engineering</i>
 					<select name="tipo" required >
 						<option selected disabled>Tipo De Vehiculo</option>
-						<option value="1">	Autobús</option>
+						<option value="1">Autobús</option>
 						<option value="2">Camión</option>
 						<option value="3">Camioneta/Furgoneta</option>
-						<option value="3">Auto</option>
-						<option value="3">Motosicleta</option>
+						<option value="4">Auto</option>
+						<option value="5">Motosicleta</option>
 					</select>
 				</div>
 				<div class="clearfix"></div>
