@@ -9,7 +9,7 @@
 				<div class="row loginContainer">
 					<div class="col s10 m10 10 offset-l1 offset-m1">
 						<div class="loginTitle">
-							<h5>Session usuario </h5>
+							<h5>Inicio De Sesión</h5>
 							<div class="col s12">
 								<form method="post" action="">
 								<div class="row">

@@ -15,16 +15,24 @@ class RutasM{
         }else{
             if( $ruta == "ingreso" || 
                 $ruta == 'empleados' ||
+                $ruta == 'Preparaciones' ||
+                $ruta == 'prueba3' ||
+                $ruta == 'Confirmar' ||
+                $ruta == 'prueba' ||   
                 $ruta == 'Vehiculos' || 
                 $ruta == 'registrar' ||
                 $ruta == 'asignacion' ||
                 $ruta == 'Principal' ||
                 $ruta == 'vehiculo' ||
+                $ruta == 'Vehiculopresupuesto' ||
+                $ruta == 'Presupuesto' ||
+                $ruta == 'vehiculoasignadoequipo' ||
                 $ruta == 'registrarempresa' ||
                 $ruta == 'registrarplaca' ||  
                 $ruta == 'registrarmecanico' || 
                 $ruta == 'ingresousuario' ||
                 $ruta == 'salir' ||
+                $ruta == 'Vistacotizacion' ||
                 $ruta == 'asignacionvehiculo' ||
                 $ruta == 'asignacionlisto' ||
                 $ruta == 'editar')

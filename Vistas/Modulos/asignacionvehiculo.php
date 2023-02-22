@@ -3,7 +3,7 @@ $empleados = new EmpleadosC();
 $pagina = $empleados->detallevehiculoC();
 
 $reparacio=$_GET['reparacion'];
-
+$contt=0;
 ?>
 
 <div class="row">
@@ -54,7 +54,18 @@ $pa= $juan->mostrarEquiposC();
 						<div class="clearfix"></div>
 						*Asignacion y entrega de vehiculos a el equipo de mecanicos
 					</blockquote>
-				<?php foreach($pa as $key => $va): ?>	
+				<?php foreach($pa as $key => $va): ?>
+				<?php  if ($contt==2) {
+					?>
+
+						<div class="col s12 m12 l12">
+						</div>
+						
+						<?php
+						$contt=1;
+					}else {
+						$contt=$contt+1;
+					}?>
 					<div class="col s12 m6">
 					
 						
@@ -65,6 +76,7 @@ $pa= $juan->mostrarEquiposC();
 						</div>
 						<div class="card-content">
 							<p><?=$va['Detallesgrupo']?></p>
+							
 						</div>
 						<div class="card-action">
 							<a href="index.php?ruta=asignacionlisto&reparacion=<?=$reparacio?>&equipo=<?=$va['id_grupo']?>">Asignar Equipo</a>

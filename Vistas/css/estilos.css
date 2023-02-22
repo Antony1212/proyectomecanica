@@ -93,3 +93,11 @@ ul:not(.browser-default) {
     backface-visibility: hidden;
     transform: translateX(-105%);
 }
+
+#enviado {
+    color: green;
+    font-weight: bold;
+    display: none;
+  }
+
+/* Estilo personalizado para los tooltips */

@@ -53,19 +53,18 @@
             <div class="search-results"></div>
           </div>
 		  
-            <!--<li class="bold waves-effect col s12"><a class="collapsible-header" tabindex="0">Pages<i class="material-icons chevron">chevron_left</i></a>
+            <li class="bold waves-effect col s12"><a class="collapsible-header" tabindex="0">Vehiculos<i class="material-icons chevron">chevron_left</i></a>
               <div class="collapsible-body" >
                 <ul>
-                  <li><a href="/pages/admin-dashboard" class="waves-effect active">Dashboard<i class="material-icons">web</i></a></li>
-                  <li><a href="/pages/admin-fixed-chart" class="waves-effect">Fixed Chart<i class="material-icons">list</i></a></li>
-                  <li><a href="/pages/admin-grid" class="waves-effect">Grid<i class="material-icons">dashboard</i></a></li>
-                  <li><a href="/pages/admin-chat" class="waves-effect">Chat<i class="material-icons">chat</i></a></li>
+                  <li><a href="index.php?ruta=vehiculo" class="waves-effect active">Seguimiento de Reparaciones<i class="material-icons">precision_manufacturing</i></a></li>
+                  <li><a href="index.php?ruta=Confirmar" class="waves-effect">Confirmar Reparacion<i class="material-icons">check</i></a></li>
+                    
                 </ul>
               </div>
             </li>
 			
 			
-            <li class="bold waves-effect  col s12"><a class="collapsible-header" tabindex="0">Charts<i class="material-icons chevron">chevron_left</i></a>
+           <!-- <li class="bold waves-effect  col s12"><a class="collapsible-header" tabindex="0">Charts<i class="material-icons chevron">chevron_left</i></a>
               <div class="collapsible-body">
                 <ul>
                   <li><a href="/pages/admin-line-charts" class="waves-effect">Line Charts<i class="material-icons">show_chart</i></a></li>
@@ -253,7 +252,7 @@
                 <ul>
                   <li><a href="index.php?ruta=asignacion" class="waves-effect">Asignacion De Vehiculos<i class="material-icons">car_rental</i></a></li>
                   <li><a href="/pages/admin-chat" class="waves-effect">Administracion de Mecanicos<i class="material-icons">chat</i></a></li>
-                  <li><a href="/pages/admin-table-custom-elements" class="waves-effect">Table with Custom Elements<i class="material-icons">settings</i></a></li>
+                  <li><a href="index.php?ruta=Vistacotizacion" class="waves-effect">Enviar Cotizacion<i class="material-icons">price_check</i></a></li>
                 </ul>
               </div>
             </li>
@@ -359,9 +358,9 @@
               <div class="collapsible-body" >
                 <ul>
                   <li><a href="index.php?ruta=Vehiculos" class="waves-effect active">Vehiculos Asignados<i class="material-icons">commute</i></a></li>
-                  <li><a href="/pages/admin-fixed-chart" class="waves-effect">Fixed Chart<i class="material-icons">list</i></a></li>
-                  <li><a href="/pages/admin-grid" class="waves-effect">Grid<i class="material-icons">dashboard</i></a></li>
-                  <li><a href="/pages/admin-chat" class="waves-effect">Chat<i class="material-icons">chat</i></a></li>
+                  <li><a href="index.php?ruta=Presupuesto" class="waves-effect">Estimacion De Presupuesto<i class="material-icons">attach_money</i></a></li>
+                  <li><a href="index.php?ruta=Preparaciones" class="waves-effect">Presupuestos Aceptados<i class="material-icons">price_check</i></a></li>
+                  <li><a href="/pages/admin-chat" class="waves-effect">Act. Est. Vehi. en Reparacion<i class="material-icons">car_repair</i></a></li>
                 </ul>
               </div>
             </li>
