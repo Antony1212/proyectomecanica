@@ -15,6 +15,10 @@ class RutasM{
         }else{
             if( $ruta == "ingreso" || 
                 $ruta == 'empleados' ||
+                $ruta == 'reportevehiculos' ||
+                $ruta == 'DetallesVehiculo' ||
+                $ruta == 'vehiculo1' ||
+                $ruta == 'Reparacionesiniciadas' ||
                 $ruta == 'Preparaciones' ||
                 $ruta == 'prueba3' ||
                 $ruta == 'Confirmar' ||

@@ -47,8 +47,15 @@ class EmpleadosM extends ConexionBD{
 
     public function mostrarEmpleadosM($tablaBD = 'empleados'){
         $cbd = ConexionBD::cBD();
-        $query = "SELECT id, nombre, email, apellido, puesto, salario 
-                FROM $tablaBD";
+        $mes_actual = date('Y-m');
+        $query = "SELECT COUNT(*) as total_reparaciones FROM reparaciones WHERE ingreso LIKE '$mes_actual%'";
+        $result = $cbd->query($query);
+        return $result;
+    }
+    public function mostrarEmpleados1M($tablaBD = 'empleados'){
+        $cbd = ConexionBD::cBD();
+        $mes_actual = date('Y-m');
+        $query = "SELECT * as total_reparaciones FROM reparaciones WHERE ingreso LIKE '$mes_actual%'";
         $result = $cbd->query($query);
         return $result;
     }
@@ -84,6 +91,28 @@ class EmpleadosM extends ConexionBD{
         $cbd = ConexionBD::cBD();
         $query = "SELECT * 
                 FROM $tablaBD";
+        $result = $cbd->query($query);
+        return $result;
+    }
+
+    public function mostrarVehiculosClienteM($tablaBD = 'grupomecanico'){
+
+        $cbd = ConexionBD::cBD();
+        $usuario=$_SESSION['id_u'];
+        
+        $query = "SELECT * FROM `usuario` as u ,vehiculo as v,reparaciones as r Where u.id_usuario=$usuario AND u.id_usuario=v.dni AND v.Placa_vehiculo=r.id_vehiculo";
+        
+        $result = $cbd->query($query);
+        return $result;
+    }
+
+    public function mostrarDetallesVehiculosClienteM($datosC,$tablaBD = 'grupomecanico'){
+
+        $cbd = ConexionBD::cBD();
+        extract($datosC);
+        
+        $query = "SELECT * FROM `dettallereparacion` WHERE id_reparacion=$Reparacion ORDER BY Fecha asc";
+        
         $result = $cbd->query($query);
         return $result;
     }
@@ -154,6 +183,15 @@ class EmpleadosM extends ConexionBD{
         return $result;
     }
 
+    public function VerReparacionesM($tablaBD = 'empleados'){
+        $cbd = ConexionBD::cBD();
+        $equipopertenece=$_SESSION['Equipo'];
+        $query = "SELECT * FROM vehiculo as v, reparaciones as r WHERE v.Placa_vehiculo=r.id_vehiculo AND r.estado ='En Reparacion' and Equipo='$equipopertenece' ORDER BY r.ingreso";
+        
+        $result = $cbd->query($query);
+        return $result;
+    }
+
     public function actualizarEmpleadoM($datosC, $tablaBD = 'empleados'){
         $cbd = ConexionBD::cBD();
         extract($datosC);
@@ -205,6 +243,30 @@ class EmpleadosM extends ConexionBD{
         return $resultado;    
     }
 
+    public function FinReparacionM($datosC, $tablaBD = 'empleados'){
+        $cbd = ConexionBD::cBD();
+        date_default_timezone_set("America/Lima");
+        
+		$fechaactual= date('Y-m-d H:i:s');
+        extract($datosC);
+
+      
+
+        
+        $query = "UPDATE `reparaciones` SET `Estado`='Reparacion Finalizada', `salida`='$fechaactual' WHERE id_reparacion=$Fin";
+       
+        $resultado = $cbd->query($query);
+
+        $query = "INSERT INTO `dettallereparacion`(`id_detalle`, `id_reparacion`, `descripcion`, `imagen`, `Titulo`, `precio`, `ID_PROD_PRODUCTO`, `Fecha`) 
+        VALUES (null,'$Fin','La Reparacion Fue Culminada'
+        ,'','Reparacion Finalizada','','','$fechaactual')";
+       
+        $resultado = $cbd->query($query);
+
+
+        return $resultado;    
+    }
+
     public function AutorizarCotizacion2M($datosC, $tablaBD = 'empleados'){
         $cbd = ConexionBD::cBD();
         date_default_timezone_set("America/Lima");
@@ -224,11 +286,18 @@ class EmpleadosM extends ConexionBD{
         $cbd = ConexionBD::cBD();
         extract($datosC);
 
-
+        date_default_timezone_set("America/Lima");
+        
+		$fechaactual= date('Y-m-d H:i:s');
         $query = "UPDATE `reparaciones` SET `estado`='En Reparacion'  WHERE `id_reparacion`=$aceptacion";
         
         $resultado = $cbd->query($query);
 
+        $query = "INSERT INTO `dettallereparacion`(`id_detalle`, `id_reparacion`, `descripcion`, `imagen`, `Titulo`, `precio`, `ID_PROD_PRODUCTO`, `Fecha`) 
+        VALUES (null,'$aceptacion','Se Inicio Con La Reparacion Del Vehiculo','','Inicio De Las Reparaciones','','','$fechaactual')";
+        
+        $resultado = $cbd->query($query);
+        
         return $resultado;    
     }
 
@@ -256,8 +325,18 @@ class EmpleadosM extends ConexionBD{
 
     public function AsignarGrupoM($datosC, $tablaBD = 'reparaciones'){
         $cbd = ConexionBD::cBD();
+
+        date_default_timezone_set("America/Lima");
+        
+		$fechaactual= date('Y-m-d H:i:s');
+
         extract($datosC);
         $query = " UPDATE `reparaciones` SET `estado`='Asignado', `Equipo`='$equipo' WHERE id_reparacion=$reparacion";
+      
+        $resultado = $cbd->query($query);
+
+        $query = "INSERT INTO `dettallereparacion`(`id_detalle`, `id_reparacion`, `descripcion`, `imagen`, `Titulo`, `precio`, `ID_PROD_PRODUCTO`, `Fecha`) 
+        VALUES (null,'$reparacion','El vehiculo se asigno a el Equipo de mecanicos N°$equipo','','Asignacion de equipo','','','$fechaactual')";
       
         $resultado = $cbd->query($query);
         return $resultado;    
@@ -305,11 +384,18 @@ class EmpleadosM extends ConexionBD{
         extract($datosC);
         
     
+        date_default_timezone_set("America/Lima");
         
+		$fechaactual= date('Y-m-d H:i:s');
 
         $query = " UPDATE `reparaciones` SET `estado`='Cotizacion Pendiente de envio' WHERE id_reparacion=$reparacion";
+
         
         $resultado = $cbd->query($query);   
+
+        $query = "INSERT INTO `dettallereparacion`(`id_detalle`, `id_reparacion`, `descripcion`, `imagen`, `Titulo`, `precio`, `ID_PROD_PRODUCTO`, `Fecha`) 
+        VALUES (null,'$reparacion','El Equipo Asignado A Su Vehiculo Estimo Un Presupuesto Mostrando El Costo Total De La Reparacion','','Estimacion De Presupuesto','','','$fechaactual')";
+        $resultado = $cbd->query($query);  
         return $resultado;    
        
 

@@ -24,17 +24,11 @@ $empleados->borrarEmpleadoC();
 		<div class="col s12 m6">
 			<div class="card horizontal">
 				<div class="card-image">
-					<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtpQu4xBOTydKEN4gmA5i4iSohWzT_TKGBFj5_XOaKEGvvj2wvB6WMLZjjRbrjvjgOh4E&usqp=CAU">
-				</div>
+					
 				<div class="card-stacked">
 					<div class="card-content">
-					<p>Toyota Yaris 2009  A1A-000</p>
-					<blockquote>
-					El Vehiculo Se Encuentra En La Etapa De Revisión
-					</blockquote>
-					</div>
-					<div class="card-action">
-					<a href="#">Mostrar detalles</a>
+					<p>Bienvenido</p>
+					
 					</div>
 				</div>
 			</div>

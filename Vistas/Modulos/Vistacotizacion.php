@@ -66,9 +66,9 @@ $registrar->pruebaC();
 												
 										</td>
 										
-										<td><a href='index.php?ruta=vehiculoasignadoequipo&reparacion=<?=$value['id_reparacion']?>'>
-										<button class="btn waves-effect waves-light blue lighten-2 black-text">Detalles<i class="material-icons left">visibility</i></button></td>
-										<i class="fas fa-check"></i>
+										<td>
+										<button id="ver-cotizacion" class="btn waves-effect waves-light blue lighten-2 black-text" data-url="Cotizaciones/<?=$value['id_Cotizacion']?>-<?=$value['id_reparacion']?>.html">Ver Cotización<i class="material-icons left">visibility</i></button>
+										</td>
 										</tbody>
 									
 									</table>
@@ -84,4 +84,12 @@ $registrar->pruebaC();
 	<?php endforeach; ?>
 
 
+		<script>
+		function mostrarCotizacion() {
+			var urlCotizacion = this.getAttribute("data-url");
+			window.open(urlCotizacion, "cotizacion", "width=800,height=600");
+		}
 		
+		var botonCotizacion = document.getElementById("ver-cotizacion");
+		botonCotizacion.addEventListener("click", mostrarCotizacion);
+	</script>

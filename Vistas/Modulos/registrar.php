@@ -52,7 +52,7 @@ $registrar->registroC();
 				<div class="input-field col l4 col-m4">
 					<i class="material-icons prefix">date_range</i>
 					<input class="datepicker" type="text" name="fecha_nacimiento" id="fecha_nacimiento">
-					<label for="fecha_nacimiento">Fecha de nacimiento</label>
+					<label for="fecha_nacimiento">Fecha de Registro</label>
 				</div>
 
 				<div class="input-field col l4 m4">

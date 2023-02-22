@@ -21,7 +21,7 @@
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" rel="stylesheet">
 		<!-- Custom JS -->
 		<script src="Vistas/js/custom.js"></script>
-		
+		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	<!--Let browser know website is optimized for mobile-->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />	
 
